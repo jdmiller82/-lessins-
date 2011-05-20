@@ -1,0 +1,127 @@
+/*---------------------------------------------------------------*/
+//                                                               //
+//                          {lessins}                            //
+//                            v0.2                               //
+//                                                               //
+//            a collection of useful mixins for less             //
+//                                                               //
+/*---------------------------------------------------------------*/
+
+#display { /*-- DISPLAY MIXIN BUNDLE --*/
+	.block() { 
+		display:block; 
+		margin:0; 
+		padding:0; 
+	}
+
+	.block-centered() { 
+		.block(); 
+		margin:0 auto; 
+	}
+
+	.block-inline(@align:top) { 
+		display: -moz-inline-stack;
+		display: inline-block;
+		zoom: 1;
+		*display: inline;
+		vertical-align: @align;
+	}
+
+	.block-inline-float(@align:top, @float:left) {
+		.block-inline(@align);
+		float:@float;
+	}
+}
+
+#border { /*-- BORDER MIXIN BUNDLE --*/
+	.border(@top, @right, @bottom, @left) {
+		border-top:@top;
+		border-right:@right;
+		border-bottom:@bottom;
+		border-left:@left;
+	}
+
+	.border-radius(@radius:5px) {
+		-moz-border-radius:@radius;
+		border-radius:@radius;
+	}
+}
+
+
+#box { /*-- BOX MIXIN BUNDLE --*/
+	.box-shadow(@x:3px, @y:3px, @blur:5px, @spread:0, @color:rgba(0,0,0,.5)) {
+		-webkit-box-shadow:@arguments;
+		-moz-box-shadow:@arguments;
+		box-shadow:@arguments;
+	}
+
+	.box-shadow-inset(@x:3px, @y:3px, @blur:5px, @spread:0, @color:rgba(0,0,0,.5)) {
+		-webkit-box-shadow:inset @arguments;
+		-moz-box-shadow:inset @arguments;
+		box-shadow:inset @arguments;
+	}
+
+	.box-sizing( @type:border-box ){
+		-moz-box-sizing:@type;
+		-webkit-box-sizing:@type;
+		box-sizing:@type;
+	}
+}
+
+#gradient { /*-- GRADIENT MIXIN BUNDLE --*/ /* borrowed from bootstrap.less */
+	.horizontal(@startColor: #555, @endColor: #333) {
+		background-color: @endColor;
+		background-repeat: no-repeat;
+		background-image: -webkit-gradient(linear, left top, right top, from(@startColor), to(@endColor));
+		background-image: -webkit-linear-gradient(right center, @startColor, @endColor);
+		background-image: -moz-linear-gradient(right center, @startColor, @endColor);
+		background-image: -o-linear-gradient(left,  @startColor,  @endColor);
+		background-image: -khtml-gradient(linear, left top, right top, from(@startColor), to(@endColor));
+		filter: e(%("progid:DXImageTransform.Microsoft.Gradient(StartColorStr='%d', EndColorStr='%d', GradientType=1)",@startColor,@endColor));
+		-ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorStr='%d', EndColorStr='%d', GradientType=1))",@startColor,@endColor);
+	}
+	.vertical(@startColor: #555, @endColor: #333) {
+		background-color: @endColor;
+		background-repeat: no-repeat;
+		background-image: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+		background-image: -webkit-linear-gradient(@startColor, @endColor);
+		background-image: -moz-linear-gradient(@startColor, @endColor);
+		background-image: -o-linear-gradient(top,  @startColor,  @endColor);
+		background-image: -khtml-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+		filter: e(%("progid:DXImageTransform.Microsoft.Gradient(StartColorStr='%d', EndColorStr='%d', GradientType=0)",@startColor,@endColor));
+		-ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorStr='%d', EndColorStr='%d', GradientType=0))",@startColor,@endColor);
+	}
+	.vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 0.5, @endColor: #c3325f) {
+		background-color: @endColor;
+		background-repeat: no-repeat;
+		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
+		background-image: -webkit-linear-gradient(@startColor, color-stop(@colorStop, @midColor), @endColor);
+		background-image: -moz-linear-gradient(@startColor, color-stop(@midColor, @colorStop), @endColor);
+	}
+}
+
+/*-- TRANSITION MIXIN --*/
+.transition(@transition:all 1s ease-in-out) {
+	-webkit-transition:@transition;
+	-moz-transition:@transition;
+	transition:@transition;
+}
+
+/*-- COLUMN MIXIN --*/
+.columns(@count:3, @width:250px, @gap:15, @rule:1px solid #000) {
+	-webkit-column-count:@count;
+	-moz-column-count:@count;
+	column-count:@count;
+	
+	-webkit-column-width: @width;
+	-moz-column-width: @width;
+	column-width: @width;
+	
+	-webkit-column-gap:@gap;
+	-moz-column-gap:@gap;
+	column-gap:@gap;
+	
+	-webkit-column-rule:@rule;
+	-moz-column-rule:@rule;
+	column-rule:@rule;
+}
