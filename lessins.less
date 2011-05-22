@@ -34,14 +34,14 @@
 }
 
 #border { /*-- BORDER MIXIN BUNDLE --*/
-	.border(@top, @right, @bottom, @left) {
+	.lines(@top, @right, @bottom, @left) {
 		border-top:@top;
 		border-right:@right;
 		border-bottom:@bottom;
 		border-left:@left;
 	}
 
-	.border-radius(@radius:5px) {
+	.radius(@radius:5px) {
 		-moz-border-radius:@radius;
 		border-radius:@radius;
 	}
@@ -49,22 +49,54 @@
 
 
 #box { /*-- BOX MIXIN BUNDLE --*/
-	.box-shadow(@x:3px, @y:3px, @blur:5px, @spread:0, @color:rgba(0,0,0,.5)) {
+	.shadow(@x:3px, @y:3px, @blur:5px, @spread:0, @color:rgba(0,0,0,.5)) {
 		-webkit-box-shadow:@arguments;
 		-moz-box-shadow:@arguments;
 		box-shadow:@arguments;
 	}
 
-	.box-shadow-inset(@x:3px, @y:3px, @blur:5px, @spread:0, @color:rgba(0,0,0,.5)) {
+	.shadow-inset(@x:3px, @y:3px, @blur:5px, @spread:0, @color:rgba(0,0,0,.5)) {
 		-webkit-box-shadow:inset @arguments;
 		-moz-box-shadow:inset @arguments;
 		box-shadow:inset @arguments;
 	}
 
-	.box-sizing( @type:border-box ){
+	.sizing( @type:border-box ) {
 		-moz-box-sizing:@type;
 		-webkit-box-sizing:@type;
 		box-sizing:@type;
+	}
+}
+
+#flex { /*-- FLEXIBLE BOX MODEL MIXIN BUNDLE --*/ /* More info: http://www.css3.info/introducing-the-flexible-box-layout-module, http://flexiejs.com/playground/ */
+	.wrap(@orient:horizontal, @align:stretch, @direction:normal, @pack:start) {
+		display:-webkit-box; display:-moz-box; display:box;
+		
+		-webkit-box-orient:@orient;
+		-moz-box-orient:@orient;
+		box-orient:@orient;
+		
+		-webkit-box-align:@align;
+		-moz-box-align:@align;
+		box-align:@align;
+		
+		-webkit-box-direction:@direction;
+		-moz-box-direction:@direction;
+		box-direction:@direction;
+		
+		-webkit-box-pack:@pack;
+		-moz-box-pack:@pack;
+		box-pack:@pack;
+	}
+	
+	.box(@flex:0, @ordinal:1) {
+		-webkit-box-flex:@flex;
+		-moz-box-flex:@flex;
+		box-flex:@flex;
+		
+		-webkit-box-ordinal-group:@ordinal;
+		-moz-box-ordinal-group:@ordinal;
+		box-ordinal-group:@ordinal;
 	}
 }
 
@@ -80,6 +112,7 @@
 		filter: e(%("progid:DXImageTransform.Microsoft.Gradient(StartColorStr='%d', EndColorStr='%d', GradientType=1)",@startColor,@endColor));
 		-ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorStr='%d', EndColorStr='%d', GradientType=1))",@startColor,@endColor);
 	}
+	
 	.vertical(@startColor: #555, @endColor: #333) {
 		background-color: @endColor;
 		background-repeat: no-repeat;
@@ -91,6 +124,7 @@
 		filter: e(%("progid:DXImageTransform.Microsoft.Gradient(StartColorStr='%d', EndColorStr='%d', GradientType=0)",@startColor,@endColor));
 		-ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorStr='%d', EndColorStr='%d', GradientType=0))",@startColor,@endColor);
 	}
+	
 	.vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 0.5, @endColor: #c3325f) {
 		background-color: @endColor;
 		background-repeat: no-repeat;
