@@ -1,0 +1,25 @@
+#display { /*-- DISPLAY MIXIN BUNDLE --*/
+	.block() { 
+		display:block; 
+		margin:0; 
+		padding:0; 
+	}
+
+	.block-centered() { 
+		.block(); 
+		margin:0 auto; 
+	}
+
+	.block-inline(@align:top) { 
+		display: -moz-inline-stack;
+		display: inline-block;
+		zoom: 1;
+		*display: inline;
+		vertical-align: @align;
+	}
+
+	.block-inline-float(@align:top, @float:left) {
+		.block-inline(@align);
+		float:@float;
+	}
+}

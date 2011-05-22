@@ -1,138 +1,39 @@
 /*---------------------------------------------------------------*/
 //                                                               //
-//                        {lessins} v0.2                         //
+//                        {lessins} v0.3                         //
 //                 (requires v1.1.0 of less.js)                  //
 //                                                               //
 //            a collection of useful mixins for less             //
 //                                                               //
 /*---------------------------------------------------------------*/
 
-#display { /*-- DISPLAY MIXIN BUNDLE --*/
-	.block() { 
-		display:block; 
-		margin:0; 
-		padding:0; 
-	}
+/*--------------------*/
+/*-- BUNDLED MIXINS --*/
+/*--------------------*/
 
-	.block-centered() { 
-		.block(); 
-		margin:0 auto; 
-	}
+/*-- DISPLAY MIXIN BUNDLE --------------------------------------------------*/
+/*-- .block(); .block-centered(); .block-inline(); .block-inline-float(); --*/
+@import 'bundles/display'; 
 
-	.block-inline(@align:top) { 
-		display: -moz-inline-stack;
-		display: inline-block;
-		zoom: 1;
-		*display: inline;
-		vertical-align: @align;
-	}
+/*-- BORDER MIXIN BUNDLE ---*/
+/*-- .lines(); .radius(); --*/
+@import 'bundles/border';
 
-	.block-inline-float(@align:top, @float:left) {
-		.block-inline(@align);
-		float:@float;
-	}
-}
+/*-- BOX MIXIN BUNDLE ------------------------*/
+/*-- .shadow(); .shadow-inset(); .sizing(); --*/
+@import 'bundles/box';
 
-#border { /*-- BORDER MIXIN BUNDLE --*/
-	.lines(@top, @right, @bottom, @left) {
-		border-top:@top;
-		border-right:@right;
-		border-bottom:@bottom;
-		border-left:@left;
-	}
+/*-- FLEXIBLE BOX MODEL MIXIN BUNDLE --*/
+/*-- .wrap(); .box(); -----------------*/
+@import 'bundles/flex';
 
-	.radius(@radius:5px) {
-		-moz-border-radius:@radius;
-		border-radius:@radius;
-	}
-}
+/*-- GRADIENT MIXIN BUNDLE ----------------------------------*/
+/*-- .horizontal(); .vertical(); .vertical-three-colors(); --*/
+@import 'bundles/gradient';
 
-
-#box { /*-- BOX MIXIN BUNDLE --*/
-	.shadow(@x:3px, @y:3px, @blur:5px, @spread:0, @color:rgba(0,0,0,.5)) {
-		-webkit-box-shadow:@arguments;
-		-moz-box-shadow:@arguments;
-		box-shadow:@arguments;
-	}
-
-	.shadow-inset(@x:3px, @y:3px, @blur:5px, @spread:0, @color:rgba(0,0,0,.5)) {
-		-webkit-box-shadow:inset @arguments;
-		-moz-box-shadow:inset @arguments;
-		box-shadow:inset @arguments;
-	}
-
-	.sizing( @type:border-box ) {
-		-moz-box-sizing:@type;
-		-webkit-box-sizing:@type;
-		box-sizing:@type;
-	}
-}
-
-#flex { /*-- FLEXIBLE BOX MODEL MIXIN BUNDLE --*/ /* More info: http://www.css3.info/introducing-the-flexible-box-layout-module, http://flexiejs.com/playground/ */
-	.wrap(@orient:horizontal, @align:stretch, @direction:normal, @pack:start) {
-		display:-webkit-box; display:-moz-box; display:box;
-		
-		-webkit-box-orient:@orient; 
-		-moz-box-orient:@orient;
-		box-orient:@orient;
-		
-		-webkit-box-align:@align;
-		-moz-box-align:@align;
-		box-align:@align;
-		
-		-webkit-box-direction:@direction;
-		-moz-box-direction:@direction;
-		box-direction:@direction;
-		
-		-webkit-box-pack:@pack;
-		-moz-box-pack:@pack;
-		box-pack:@pack;
-	}
-	
-	.box(@flex:0, @ordinal:1) {
-		-webkit-box-flex:@flex;
-		-moz-box-flex:@flex;
-		box-flex:@flex;
-		
-		-webkit-box-ordinal-group:@ordinal;
-		-moz-box-ordinal-group:@ordinal;
-		box-ordinal-group:@ordinal;
-	}
-}
-
-#gradient { /*-- GRADIENT MIXIN BUNDLE --*/ /* borrowed from bootstrap.less */
-	.horizontal(@startColor: #555, @endColor: #333) {
-		background-color: @endColor;
-		background-repeat: no-repeat;
-		background-image: -webkit-gradient(linear, left top, right top, from(@startColor), to(@endColor));
-		background-image: -webkit-linear-gradient(right center, @startColor, @endColor);
-		background-image: -moz-linear-gradient(right center, @startColor, @endColor);
-		background-image: -o-linear-gradient(left,  @startColor,  @endColor);
-		background-image: -khtml-gradient(linear, left top, right top, from(@startColor), to(@endColor));
-		filter: e(%("progid:DXImageTransform.Microsoft.Gradient(StartColorStr='%d', EndColorStr='%d', GradientType=1)",@startColor,@endColor));
-		-ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorStr='%d', EndColorStr='%d', GradientType=1))",@startColor,@endColor);
-	}
-	
-	.vertical(@startColor: #555, @endColor: #333) {
-		background-color: @endColor;
-		background-repeat: no-repeat;
-		background-image: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
-		background-image: -webkit-linear-gradient(@startColor, @endColor);
-		background-image: -moz-linear-gradient(@startColor, @endColor);
-		background-image: -o-linear-gradient(top,  @startColor,  @endColor);
-		background-image: -khtml-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
-		filter: e(%("progid:DXImageTransform.Microsoft.Gradient(StartColorStr='%d', EndColorStr='%d', GradientType=0)",@startColor,@endColor));
-		-ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorStr='%d', EndColorStr='%d', GradientType=0))",@startColor,@endColor);
-	}
-	
-	.vertical-three-colors(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 0.5, @endColor: #c3325f) {
-		background-color: @endColor;
-		background-repeat: no-repeat;
-		background-image: -webkit-gradient(linear, 0 0, 0 100%, from(@startColor), color-stop(@colorStop, @midColor), to(@endColor));
-		background-image: -webkit-linear-gradient(@startColor, color-stop(@colorStop, @midColor), @endColor);
-		background-image: -moz-linear-gradient(@startColor, color-stop(@midColor, @colorStop), @endColor);
-	}
-}
+/*------------------------*/
+/*-- NON-BUNDLED MIXINS --*/
+/*------------------------*/
 
 /*-- TRANSITION MIXIN --*/
 .transition(@transition:all 1s ease-in-out) {

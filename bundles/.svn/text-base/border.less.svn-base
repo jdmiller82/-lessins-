@@ -1,0 +1,13 @@
+#border { /*-- BORDER MIXIN BUNDLE --*/
+	.lines(@top, @right, @bottom, @left) {
+		border-top:@top;
+		border-right:@right;
+		border-bottom:@bottom;
+		border-left:@left;
+	}
+
+	.radius(@radius:5px) {
+		-moz-border-radius:@radius;
+		border-radius:@radius;
+	}
+}
