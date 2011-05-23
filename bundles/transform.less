@@ -1,0 +1,26 @@
+#transform { /*-- TRANSFORM MIXIN BUNDLE --*/ /* borrowed inspiration from Brian Notess http://www.briannotess.com/ */
+
+	.translate(@translate){
+		-webkit-transform:translate(@arguments);
+		-moz-transform:translate(@arguments);
+		transform:translate(@arguments);
+	}
+	
+	.scale(@scale){
+		-webkit-transform:scale(@arguments);
+		-moz-transform:scale(@arguments);
+		transform:scale(@arguments);
+	}
+	
+	.rotate(@deg){
+		-webkit-transform:@arguments;
+		-moz-transform:@arguments;
+		transform:@arguments;
+	}
+	
+	.skew(@deg){
+		-moz-transform:skew(@deg);
+		-webkit-transform:skew(@deg);
+		transform:skew(@deg);
+	}
+}
