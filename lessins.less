@@ -7,6 +7,11 @@
 //                                                               //
 /*---------------------------------------------------------------*/
 
+/*-------------------*/
+/*-- IMPORT CONFIG --*/
+/*-------------------*/
+@import 'config'; 
+
 /*--------------------*/
 /*-- BUNDLED MIXINS --*/
 /*--------------------*/
@@ -59,4 +64,13 @@
 	-webkit-column-rule:@rule;
 	-moz-column-rule:@rule;
 	column-rule:@rule;
+}
+
+/*-- IMAGE REPLACEMENT MIXIN --*/
+.img-replace(@image, @posX, @posY @width, @height) {
+	.block();
+	width:@width;
+	height:@height;
+	background:url('@{img-base}/@image') @posX @posY;
+	text-indent:-9999px
 }
