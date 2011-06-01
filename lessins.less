@@ -7,6 +7,11 @@
 //                                                               //
 /*---------------------------------------------------------------*/
 
+/*------------*/
+/*-- CONFIG --*/
+/*------------*/
+@img-path:'/_images';
+
 /*--------------------*/
 /*-- BUNDLED MIXINS --*/
 /*--------------------*/
@@ -66,10 +71,10 @@
 }
 
 /*-- IMAGE REPLACEMENT MIXIN --*/
-.img-replace(@image, @posX, @posY @width, @height) {
-	.block();
+.img-replace(@image, @width, @height, @posX, @posY) {
+	#display > .block();
 	width:@width;
 	height:@height;
-	background:url('@image') @posX @posY;
+	background:url('@{img-path}/@image') @posX @posY;
 	text-indent:-9999px
 }
