@@ -7,9 +7,9 @@
 //                                                               //
 /*---------------------------------------------------------------*/
 
-/*------------*/
-/*-- CONFIG --*/
-/*------------*/
+/*----------------------*/
+/*-- CONFIG VARIABLES --*/
+/*----------------------*/
 @img-path:'/_images';
 
 /*--------------------*/
@@ -68,13 +68,4 @@
 	-webkit-column-rule:@rule;
 	-moz-column-rule:@rule;
 	column-rule:@rule;
-}
-
-/*-- IMAGE REPLACEMENT MIXIN --*/
-.img-replace(@image, @width, @height, @posX, @posY) {
-	#display > .block();
-	width:@width;
-	height:@height;
-	background:url('@{img-path}/@image') @posX @posY;
-	text-indent:-9999px
 }
