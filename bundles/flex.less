@@ -1,6 +1,13 @@
-#flex { /*-- FLEXIBLE BOX MODEL MIXIN BUNDLE --*/ /* More info: http://www.css3.info/introducing-the-flexible-box-layout-module, http://flexiejs.com/playground/ */
-	.wrap(@orient:horizontal, @align:stretch, @direction:normal, @pack:start) {
-		display:-webkit-box; display:-moz-box; display:box;
+#flex { /*-- FLEXIBLE BOX MODEL MIXIN BUNDLE --*/
+	
+	/* @orient: horizontal | vertical | inherit */
+	/* @align: start | end | center | baseline | stretch */
+	/* @direction: normal | reverse */
+	/* @pack: start | end | center | justify */
+	.parent(@orient, @align, @direction, @pack) {
+		display:-webkit-box; 
+		display:-moz-box; 
+		display:box;
 		
 		-webkit-box-orient:@orient; 
 		-moz-box-orient:@orient;
@@ -19,7 +26,8 @@
 		box-pack:@pack;
 	}
 	
-	.box(@flex:0, @ordinal:1) {
+	/*Note: @flex:0 is inflexible. Anything 1+ is flexible */
+	.child(@flex:0, @ordinal:1) {
 		-webkit-box-flex:@flex;
 		-moz-box-flex:@flex;
 		box-flex:@flex;

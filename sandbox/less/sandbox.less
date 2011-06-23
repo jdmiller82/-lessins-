@@ -16,7 +16,7 @@
 		#box > .shadow(0px, 0px, 8px, 0, rgba(0,0,0,0.5);
 		
 		#gradient > .vertical-three-colors();
-		
+		position:relative;
 		padding:48px;
 		width:650px;
 		color:#fff; text-shadow:1px 1px 0 rgba(0,0,0,0.5);
@@ -24,6 +24,49 @@
 		
 		&:hover {
 			#transform > .scale(1.25);
+		}
+	}
+	#flexbox {
+		#display > .block-centered(); 
+		
+		#border > .lines(2px solid #fff, 2px solid #fff, 2px solid #fff, 2px solid #fff);
+		#border > .radius(10px);
+		
+		#box > .shadow(0px, 0px, 8px, 0, rgba(0,0,0,0.5);
+		
+		#gradient > .vertical-three-colors();
+		position:relative;
+		margin-top:24px;
+		padding:48px;
+		width:650px;
+		color:#fff; text-shadow:1px 1px 0 rgba(0,0,0,0.5);
+		.transition(all 0.25s ease-in-out);
+		
+		&:hover {
+			#transform > .scale(1.25);
+		}
+		
+		#flex > .parent(horizontal, stretch, normal, justify);
+		
+		p { position:absolute; top:10px; left:10px; }
+		
+		.child {
+			margin:20px;
+			padding:10px;
+			width:100px;
+			height:50px;
+			background:rgba(255,255,255,0.25); 
+			
+			#flex > .child(0, 1);
+			
+			&:first-of-type {
+				#flex > .child(1, 1);
+			}
+			
+			&:last-of-type {
+				#flex > .child(2, 1);
+			}
+			
 		}
 	}
 }

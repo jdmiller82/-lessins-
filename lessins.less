@@ -1,75 +1,54 @@
-/*---------------------------------------------------------------*/
-//                                                               //
-//                        {lessins} v0.3                         //
-//                 (requires v1.1.0 of less.js)                  //
-//                                                               //
-//           a collection of useful mixins for {less}            //
-//                                                               //
-/*---------------------------------------------------------------*/
+/*--------------------------------------------------------------------------*/
+//                                                                          //
+//                              {lessins} v0.3                              //
+//                       (requires v1.1.0 of less.js)                       //
+//                                                                          //
+//                 a collection of useful mixins for {less}                 //
+//                                                                          //
+/*--------------------------------------------------------------------------*/
 
-/*----------------------*/
-/*-- CONFIG VARIABLES --*/
-/*----------------------*/
+/*--------------------------------------------------------------------------*/
+/*---------------------------- CONFIG VARIABLES ----------------------------*/
+/*--------------------------------------------------------------------------*/
 @img-path:'/_images';
 
-/*--------------------*/
-/*-- BUNDLED MIXINS --*/
-/*--------------------*/
 
-/*-- DISPLAY MIXIN BUNDLE --------------------------------------------------*/
+/*--------------------------------------------------------------------------*/
+/*----------------------------- BUNDLED MIXINS -----------------------------*/
+/*--------------------------------------------------------------------------*/
+
+/*-------------------------- DISPLAY MIXIN BUNDLE --------------------------*/
 /*-- .block(); .block-centered(); .block-inline(); .block-inline-float(); --*/
 @import 'bundles/display'; 
 
-/*-- BORDER MIXIN BUNDLE ---*/
-/*-- .lines(); .radius(); --*/
+/*-------------------------- BORDER MIXIN BUNDLE ---------------------------*/
+/*-------------------------- .lines(); .radius(); --------------------------*/
 @import 'bundles/border';
 
-/*-- BOX MIXIN BUNDLE ------------------------*/
-/*-- .shadow(); .shadow-inset(); .sizing(); --*/
+/*---------------------------- BOX MIXIN BUNDLE ----------------------------*/
+/*----------------- .shadow(); .shadow-inset(); .sizing(); -----------------*/
 @import 'bundles/box';
 
-/*-- FLEXIBLE BOX MODEL MIXIN BUNDLE --*/
-/*-- .wrap(); .box(); -----------------*/
+/*--------------------- FLEXIBLE BOX MODEL MIXIN BUNDLE --------------------*/
+/*---------------------------- .wrap(); .box(); ----------------------------*/
 @import 'bundles/flex';
 
-/*-- GRADIENT MIXIN BUNDLE ----------------------------------*/
-/*-- .horizontal(); .vertical(); .vertical-three-colors(); --*/
+/*-------------------------- GRADIENT MIXIN BUNDLE -------------------------*/
+/*--------- .horizontal(); .vertical(); .vertical-three-colors(); ----------*/
 @import 'bundles/gradient';
 
-/*-- TRANSFORM MIXIN BUNDLE ----------------------------------*/
-/*-- .translate(); .scale(); .rotate(); .skew(); -------------*/
+/*------------------------- TRANSFORM MIXIN BUNDLE -------------------------*/
+/*-------------- .translate(); .scale(); .rotate(); .skew(); ---------------*/
 @import 'bundles/transform';
 
-/*-- IMAGE MIXIN BUNDLE ----*/
-/*-- .replace(); .mask(); --*/
+/*------------------------- TRANSITION MIXIN BUNDLE ------------------------*/
+/*---------------------------- .transition(); ------------------------------*/
+@import 'bundles/transition';
+
+/*--------------------------- IMAGE MIXIN BUNDLE ---------------------------*/
+/*-------------------------- .replace(); .mask(); --------------------------*/
 @import 'bundles/image';
 
-/*------------------------*/
-/*-- NON-BUNDLED MIXINS --*/
-/*------------------------*/
-
-/*-- TRANSITION MIXIN --*/
-.transition(@transition:all 1s ease-in-out) {
-	-webkit-transition:@transition;
-	-moz-transition:@transition;
-	transition:@transition;
-}
-
-/*-- COLUMN MIXIN --*/
-.columns(@count:3, @width:250px, @gap:15, @rule:1px solid #000) {
-	-webkit-column-count:@count;
-	-moz-column-count:@count;
-	column-count:@count;
-	
-	-webkit-column-width: @width;
-	-moz-column-width: @width;
-	column-width: @width;
-	
-	-webkit-column-gap:@gap;
-	-moz-column-gap:@gap;
-	column-gap:@gap;
-	
-	-webkit-column-rule:@rule;
-	-moz-column-rule:@rule;
-	column-rule:@rule;
-}
+/*--------------------------- LAYOUT MIXIN BUNDLE --------------------------*/
+/*------------------------------ .columns(); -------------------------------*/
+@import 'bundles/layout';
