@@ -1,5 +1,5 @@
 #image { /*-- IMAGE MIXIN BUNDLE --*/
-	
+
 	.replace(@image, @width, @height, @posX, @posY) {
 		#display > .block();
 		width:@width;
@@ -7,7 +7,7 @@
 		background:url('@{img-path}/@image') @posX @posY;
 		text-indent:-9999px
 	}
-
+	
 	.mask(@image) {
 		-webkit-mask-image:url('@{img-path}/@image');
 		-moz-mask-image:url('@{img-path}/@image');
